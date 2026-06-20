@@ -97,7 +97,7 @@ test.describe("product page validation", () => {
         await productPageRef.func_gotoCartPage()
         expect(page).toHaveURL("https://www.saucedemo.com/cart.html")
     })
-    test.only("TC_013 get first product details",async({page})=>{
+    test("TC_013 get first product details",async({page})=>{
         await productPageRef.func_getfirstProductDetails()
     
     })
