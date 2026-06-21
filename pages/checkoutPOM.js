@@ -26,5 +26,6 @@ class CheckoutPOM {
     async func_getCheckoutErrorMessage() {
         return await this.page.locator(checkoutLocators.errormsg).textContent()
     }
+   
 }
 module.exports = CheckoutPOM

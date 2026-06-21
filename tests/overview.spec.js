@@ -23,7 +23,7 @@ test.describe("cart page validation", () => {
     let cartPageRef;
     let checkoutRef;
     let overviewRef;
-    
+
     test.beforeEach(async ({ page }) => {
 
         loginPageRef = new LoginPOM(page)
@@ -42,8 +42,21 @@ test.describe("cart page validation", () => {
         await productPageRef.func_addfirstProducttoCart()
         await productPageRef.func_gotoCartPage()
         await cartPageRef.func_clickOnCheckOutLink()
-
+        await checkoutRef.func_fillcheckoutData(checkoutData.firstName, checkoutData.lastName, checkoutData.postalCode)
+        await checkoutRef.func_clickOnCheckoutContinue()
     })
+    test("TC_01 verify URL and UI Element on Overview Page", async ({ page }) => {
+        const uiElements = await overviewRef.getURLandUIElements()
+        console.log(uiElements)
+        //URL Validation
+       await  expect(page).toHaveURL(/checkout-step-two/)
 
-
+        //UI Elements
+        await expect(uiElements.overviewTitle).toContain("Overview")
+        await expect(uiElements.priceTotal).toContain("$29.99")
+    })
+    test.only("get overview product details",async ({page})=>{
+       const cartProductDetails = await overviewRef.func_getAllProductDetails()
+        console.log(cartProductDetails)
+    })
 })

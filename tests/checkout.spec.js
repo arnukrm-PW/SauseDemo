@@ -74,5 +74,10 @@ test.describe("cart page validation", () => {
         expect(errormsg).toContain("Error:")
 
     })
+   
+
+  
+
+    
 
 })
