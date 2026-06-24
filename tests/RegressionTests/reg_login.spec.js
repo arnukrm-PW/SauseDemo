@@ -58,11 +58,4 @@ test("LGN_007	Logout	Login → click menu → logout	Redirected to login page",a
     await expect(page.locator("#login-button")).toBeVisible()
 
 })
-
-     
-
-
-
-
-
 })
