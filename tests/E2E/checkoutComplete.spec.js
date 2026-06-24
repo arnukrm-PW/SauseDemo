@@ -70,7 +70,7 @@ test.describe("cart page validation", () => {
 const successMessage = await checkoutCompleteRef.func_getSuccessMessageText()
         expect(successMessage).toContain("Thank you")
     })
-    test.only("TC_03 BachHome Validation",async({page})=>{
+    test("TC_03 BachHome Validation",async({page})=>{
 
         await checkoutCompleteRef.func_goBackHometoProductPage()
         expect(page).toHaveURL(/inventory/)
