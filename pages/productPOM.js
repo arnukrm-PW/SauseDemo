@@ -1,5 +1,6 @@
 const { describe } = require('node:test')
 const productLocators = require('../locators/productLocator')
+const loginLocators = require('../locators/loginLocators')
 const testData = require('../test-data/testData')
 
 class ProductPOM {
@@ -90,6 +91,19 @@ class ProductPOM {
        await this.page.selectOption(productLocators.filterName,"hilo") 
        
     }
+    async func_countTotalProducts(){
+        return await this.page.locator(productLocators.productName)
+
+    }
+async func_getProductNamesWithoutallTextContent(){
+        return await this.page.locator(productLocators.productName)
+    }
+async func_getProductDescriptionWithoutAllTextContent(){
+return  this.page.locator(productLocators.productDesc)
+}    
+async func_getProductDescriptionwithAllTextContent(){
+return  this.page.locator(productLocators.productDesc).allTextContents()
+}    
     async func_getProductNames(){
         return await this.page.locator(productLocators.productName).allTextContents()
     }
