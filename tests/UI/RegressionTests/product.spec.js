@@ -36,7 +36,7 @@ for (let i=0;i<productData.expectedName.length;i++){
 // console.log(productName)
 //     expect(productName.length).toBe(6)
 })
-test.only("PRD_003	Verify Product Price	Check product prices	Prices displayed correctly",async ({page})=>{
+test("PRD_003	Verify Product Price	Check product prices	Prices displayed correctly",async ({page})=>{
 const productDesc = await productPageRef.func_getProductDescriptionWithoutAllTextContent()
 //const expectedDesc = await productPageRef.func_getProductDescriptionwithAllTextContent()
 //console.log(expectedDesc)
