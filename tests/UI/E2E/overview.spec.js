@@ -17,6 +17,7 @@ const checkoutCompleteLocators = require('../../../locators/checkoutCompleteLoca
 //testData
 const testData = require('../../../test-data/testData')
 const checkoutData = require('../../../test-data/checkoutData')
+const {waitForElement}= require('../../../utils/dynamicWait')
 
 
 
@@ -73,11 +74,13 @@ test.describe("cart page validation", () => {
     })
     test("TC_03 validate cancel button functionality ", async ({ page }) => {
         await overviewRef.cancel()
+        await waitForElement(page,"#react-burger-menu-btn")
         expect(await page.locator(productLocator.burgerMenu)).toBeVisible()
 
     })
     test("TC_04 Finish functionality ", async ({ page }) => {
         await overviewRef.finish()
+        await waitForElement(page,".title")
         expect(await page.locator(checkoutCompleteLocators.pageInfo)).toBeVisible()
 
     })
@@ -103,8 +106,9 @@ test.describe("cart page validation", () => {
     })
     test("TC_07 Validate final button functionality",async ({page})=>{
         await overviewRef.finish()
-        expect(page.locator(checkoutCompleteLocators.pageInfo)).toBeVisible()
-        expect(page.locator(checkoutCompleteLocators.pageInfo)).toContainText("Complete")
+       // await waitForElement(page,".title")
+        expect(await page.locator(checkoutCompleteLocators.pageInfo)).toBeVisible()
+        expect(await page.locator(checkoutCompleteLocators.pageInfo)).toContainText("Complete")
 
     })
 })
